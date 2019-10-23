@@ -1,5 +1,4 @@
 import React from 'react';
-import { Loader } from '@8base/boost';
 import { withAuth } from '@8base/react-sdk';
 
 class CallbackContainer extends React.Component {
@@ -12,7 +11,7 @@ class CallbackContainer extends React.Component {
   }
 
   render() {
-    return <Loader stretch />;
+    return <h2>Loading...</h2>;
   }
 }
 
