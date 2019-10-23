@@ -1,0 +1,53 @@
+{
+  "name": "8base-app-example-client",
+  "version": "1.0.0",
+  "dependencies": {
+    "@8base/app-provider": "^0.37.2",
+    "@8base/boost": "^1.1.1",
+    "@8base/file-input": "^0.37.2",
+    "@8base/forms": "^0.37.2",
+    "@8base/react-sdk": "^0.37.2",
+    "@emotion/styled": "^10.0.17",
+    "apollo-client": "^2.6.4",
+    "emotion": "^10.0.17",
+    "graphql": "^14.5.7",
+    "graphql-tag": "^2.9.2",
+    "luxon": "^1.5.0",
+    "ramda": "^0.26.1",
+    "react": "^16.8.6",
+    "react-apollo": "3.1.1",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.2",
+    "react-toastify": "^5.4.0",
+    "recompose": "^0.30.0"
+  },
+  "scripts": {
+    "start": "cross-env NODE_PATH=src react-scripts start",
+    "build": "cross-env NODE_PATH=src react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "eslint": "eslint src/**/*.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "eslint": "6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-plugin-flowtype": "^4.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.14.3"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
