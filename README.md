@@ -10,7 +10,7 @@ To run the app, you're going to need to first install its dependencies.
 ```sh
 $ npm install
 ```
-1. The [.env](./.env) file provides a template of the required environment variables. Please do **not** commit any environment variables to git tracking. Running the following command will copy the `.env` template a new `.env.local` file that's already specified in the `.gitignor`.
+1. The [.env](./.env) file provides a template of the required environment variables. Please do **not** commit any environment variables to git tracking. Running the following command will copy the `.env` template a new `.env.local` file that's already specified in the `.gitignore`.
 
 ```sh
 cat .env > .env.local
