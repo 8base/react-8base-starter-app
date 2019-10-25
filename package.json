@@ -1,9 +1,10 @@
 {
-  "name": "8base-app-example-client",
+  "name": "8base-react-starter-app",
   "version": "1.0.0",
   "dependencies": {
-    "@8base/app-provider": "^0.37.2",
+    "@8base/api-client": "^1.1.0",
     "@8base/react-sdk": "^0.37.2",
+    "@8base/app-provider": "^0.37.2",
     "apollo-client": "^2.6.4",
     "graphql": "^14.5.7",
     "graphql-tag": "^2.9.2",
@@ -15,8 +16,8 @@
     "recompose": "^0.30.0"
   },
   "scripts": {
-    "start": "cross-env NODE_PATH=src PORT=8080 react-scripts start",
-    "build": "cross-env NODE_PATH=src react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "eslint": "eslint src/**/*.js"
@@ -24,7 +25,6 @@
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "cross-env": "^6.0.0",
     "dotenv": "^8.2.0",
     "eslint": "6.4.0",
     "eslint-config-prettier": "^6.3.0",

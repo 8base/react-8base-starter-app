@@ -1,22 +1,27 @@
 import React from 'react';
 import { compose } from 'recompose';
 import { graphql } from 'react-apollo';
-import { USER_QUERY } from '../../shared/graphql';
+import { CURRENT_USER_QUERY } from '../../shared/graphql';
 
-let Profile = ({ ...restArgs }) => (
+let Profile = ({ data }) => (
   <>
     <h1>Welcome Profile!</h1>
-    {restArgs.user.loading ? (
+    {data.loading ? (
       <span>Loading...</span>
     ) : (
       <div>
-        {console.log(restArgs)}
-        <h1>{restArgs.user.email}</h1>
+        <h1>{data.user.email}</h1>
+        <ul>
+          <li>ID: {data.user.id}</li>
+          <li>
+            Name: {data.user.firstName} {data.user.lastName}
+          </li>
+        </ul>
       </div>
     )}
   </>
 );
 
-Profile = compose(graphql(USER_QUERY, { name: 'user' }))(Profile);
+Profile = compose(graphql(CURRENT_USER_QUERY))(Profile);
 
 export { Profile };

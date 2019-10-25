@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import AuthClient from './shared/auth';
 
-const workspaceEndpoint = process.env.REACT_APP_8BASE_API_ENDPOINT;
+const workspaceEndpoint = process.env.REACT_APP_WORKSPACE_ENDPOINT;
 
 class Application extends React.PureComponent {
   onRequestSuccess = ({ operation }) => {

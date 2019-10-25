@@ -3,7 +3,7 @@ import { compose } from 'recompose';
 import { withAuth } from '@8base/react-sdk';
 import { Query, withApollo } from 'react-apollo';
 
-import { USER_QUERY } from '../shared/graphql';
+import { CURRENT_USER_QUERY } from '../shared/graphql';
 
 class AuthButton extends React.Component {
   renderContent = ({ loading }) => {
@@ -24,13 +24,13 @@ class AuthButton extends React.Component {
       </button>
     );
 
-    const Login = () => <button onClick={auth.authClient.authorize}>Sign In</button>;
+    const Login = () => <button onClick={() => auth.authClient.authorize()}>Sign In</button>;
 
     return <>{auth.isAuthorized ? <Logout /> : <Login />}</>;
   };
 
   render() {
-    return <Query query={USER_QUERY}>{this.renderContent}</Query>;
+    return <Query query={CURRENT_USER_QUERY}>{this.renderContent}</Query>;
   }
 }
 
