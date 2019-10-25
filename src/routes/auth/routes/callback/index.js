@@ -30,12 +30,13 @@ class CallbackContainer extends React.Component {
 
   async componentDidMount() {
     const { auth, history } = this.props;
+    /* Get authResult from auth client after redirect */
     const authResult = await auth.authClient.getAuthorizedData();
-
+    /* Identify or create user record using authenticated details */
     await this.handleAuthentication(authResult);
-
+    /* Add the idToken to the auth state */
     auth.authClient.setState({ token: authResult.idToken });
-
+    /* Redirect user to root path */
     history.replace('/');
   }
 
@@ -43,7 +44,7 @@ class CallbackContainer extends React.Component {
     return <h2>Loading...</h2>;
   }
 }
-
+/* withAuth injects 'auth' prop into component */
 CallbackContainer = withAuth(CallbackContainer);
 
 export { CallbackContainer };
