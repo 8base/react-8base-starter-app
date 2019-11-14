@@ -19,7 +19,7 @@ cat .env > .env.local
 All variables in the template are collected from your workspace and get used to enable both authentication and api connectivity.
 
 ```sh
-PORT=8080
+PORT=3000
 NODE_PATH=src
 NODE_ENV=development
 REACT_APP_WORKSPACE_ENDPOINT=<workspace_endpoint>
