@@ -2,17 +2,11 @@
   "name": "8base-react-starter-app",
   "version": "1.0.0",
   "dependencies": {
-    "@8base/api-client": "^1.1.0",
-    "@8base/react-sdk": "^0.37.2",
-    "@8base/app-provider": "^0.37.2",
-    "apollo-client": "^2.6.4",
-    "graphql": "^14.5.7",
-    "graphql-tag": "^2.9.2",
+    "8base-js-sdk": "^0.1.0",
     "react": "^16.8.6",
-    "react-apollo": "3.1.1",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.2",
+    "react-scripts": "^3.4.0",
     "recompose": "^0.30.0"
   },
   "scripts": {
