@@ -1,11 +1,13 @@
 import React from 'react';
-import { withAuth } from '@8base/app-provider';
+
+import { withContext } from '../../../../shared/components/withContext';
+import { AuthContext } from '../../../../shared/components/AuthContext';
 
 class AuthContainer extends React.Component {
-  async componentDidMount() {
+  componentDidMount() {
     const { auth } = this.props;
 
-    await auth.authClient.authorize();
+    auth.authorize();
   }
 
   render() {
@@ -13,6 +15,6 @@ class AuthContainer extends React.Component {
   }
 }
 
-AuthContainer = withAuth(AuthContainer);
+AuthContainer = withContext('auth', AuthContext)(AuthContainer);
 
 export { AuthContainer };

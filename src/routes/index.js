@@ -1,5 +1,4 @@
 import React from 'react';
-import { ProtectedRoute } from 'shared/components';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 /* Import UI Components */
@@ -9,8 +8,9 @@ import { NavBar } from '../components';
 import { Home } from './home';
 import { Profile } from './profile';
 import { AuthCallback } from './auth';
+import { ProtectedRoute } from '../shared/components';
 
-export default class Router extends React.PureComponent {
+export default class Router extends React.Component {
   render() {
     return (
       <Switch>

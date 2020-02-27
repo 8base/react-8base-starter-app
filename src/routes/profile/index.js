@@ -1,27 +1,46 @@
 import React from 'react';
-import { compose } from 'recompose';
-import { graphql } from 'react-apollo';
 import { CURRENT_USER_QUERY } from '../../shared/graphql';
 
-let Profile = ({ data }) => (
-  <>
-    <h1>Welcome Profile!</h1>
-    {data.loading ? (
-      <span>Loading...</span>
-    ) : (
-      <div>
-        <h1>{data.user.email}</h1>
-        <ul>
-          <li>ID: {data.user.id}</li>
-          <li>
-            Name: {data.user.firstName} {data.user.lastName}
-          </li>
-        </ul>
-      </div>
-    )}
-  </>
-);
+import { withContext } from '../../shared/components/withContext';
+import { ApiContext } from '../../shared/components/ApiContext';
 
-Profile = compose(graphql(CURRENT_USER_QUERY))(Profile);
+class Profile extends React.Component {
+  state = {};
+
+  async componentDidMount() {
+    const userResponse = await this.props.api.request(CURRENT_USER_QUERY);
+
+    if (userResponse.data.user) {
+      this.setState({
+        user: userResponse.data.user,
+      });
+    }
+  }
+
+  render() {
+    const { user } = this.state;
+
+    return (
+      <>
+        <h1>Welcome Profile!</h1>
+        {!user ? (
+          <span>Loading...</span>
+        ) : (
+          <div>
+            <h1>{user.email}</h1>
+            <ul>
+              <li>ID: {user.id}</li>
+              <li>
+                Name: {user.firstName} {user.lastName}
+              </li>
+            </ul>
+          </div>
+        )}
+      </>
+    );
+  }
+}
+
+Profile = withContext('api', ApiContext)(Profile);
 
 export { Profile };

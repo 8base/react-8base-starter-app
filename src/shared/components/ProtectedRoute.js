@@ -1,6 +1,6 @@
 import React from 'react';
-import { withAuth } from '@8base/app-provider';
 import { Route, Redirect } from 'react-router-dom';
+
 /**
  * Depending on the props available, the rendered component
  * must be handled appropriately and then returned.
@@ -23,7 +23,9 @@ const renderComponent = props => {
   } else if (children) {
     rendered = children;
   } else if (!rendered) {
-    throw new Error('Error: must specify either a render prop, a render function as children, or a component prop.');
+    throw new Error(
+      'Error: must specify either a render prop, a render function as children, or a component prop.'
+    );
   }
 
   return rendered;
@@ -35,19 +37,20 @@ const renderComponent = props => {
  */
 class ProtectedRoute extends React.Component {
   renderRoute = () => {
-    const {
-      auth: { isAuthorized },
-      ...restProps
-    } = this.props;
+    const idToken = localStorage.getItem('idToken');
 
-    if (isAuthorized) {
-      return renderComponent(restProps);
+    if (idToken) {
+      return renderComponent(this.props);
     }
     /**
      * If the user should be redirected to a different path when not authorized, add
      * that route as the redirect's pathname.
      */
-    return <Redirect to={{ pathname: '/auth', state: { from: restProps.location } }} />;
+    return (
+      <Redirect
+        to={{ pathname: '/auth', state: { from: this.props.location } }}
+      />
+    );
   };
 
   render() {
@@ -56,7 +59,5 @@ class ProtectedRoute extends React.Component {
     return <Route {...rProps} render={this.renderRoute} />;
   }
 }
-
-ProtectedRoute = withAuth(ProtectedRoute);
 
 export { ProtectedRoute };

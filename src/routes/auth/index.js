@@ -6,7 +6,7 @@ import { CallbackContainer } from './routes/callback';
 
 export const AuthCallback = () => (
   <React.Fragment>
-    <Route exact path="/auth/" component={AuthContainer} />
+    <Route exact path="/auth" component={AuthContainer} />
     <Route path="/auth/callback" component={CallbackContainer} />
   </React.Fragment>
 );

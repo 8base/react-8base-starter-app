@@ -1,42 +1,40 @@
 import React from 'react';
-import { compose } from 'recompose';
-import { withAuth } from '@8base/react-sdk';
-import { Query, withApollo } from 'react-apollo';
 
-import { CURRENT_USER_QUERY } from '../shared/graphql';
+import { withContext } from '../shared/components/withContext';
+import { AuthContext } from '../shared/components/AuthContext';
 
 class AuthButton extends React.Component {
-  renderContent = ({ loading }) => {
-    const { auth, client } = this.props;
-
-    if (loading) {
-      return null;
-    }
-
+  render() {
+    const { auth } = this.props;
+    const idToken = localStorage.getItem('idToken');
     const Logout = () => (
       <button
-        onClick={async () => {
-          await client.clearStore();
-          auth.authClient.logout();
+        onClick={() => {
+          localStorage.removeItem('idToken');
+          auth.signOut();
         }}
       >
         Sign Out
       </button>
     );
+    const Login = () => (
+      <button
+        onClick={() => {
+          auth.authorize();
+        }}
+      >
+        Sign In
+      </button>
+    );
 
-    const Login = () => <button onClick={() => auth.authClient.authorize()}>Sign In</button>;
+    if (idToken) {
+      return <Logout />;
+    }
 
-    return <>{auth.isAuthorized ? <Logout /> : <Login />}</>;
-  };
-
-  render() {
-    return <Query query={CURRENT_USER_QUERY}>{this.renderContent}</Query>;
+    return <Login />;
   }
 }
 
-AuthButton = compose(
-  withApollo,
-  withAuth
-)(AuthButton);
+AuthButton = withContext('auth', AuthContext)(AuthButton);
 
 export { AuthButton };
