@@ -19,7 +19,9 @@ class CallbackContainer extends React.Component {
        * Auth headers for communicating with the 8base API.
        */
       {
-        Authorization: `Bearer ${idToken}`,
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
       }
     );
 
