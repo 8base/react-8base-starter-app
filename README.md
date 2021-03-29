@@ -2,7 +2,7 @@
 
 This project is a starter app for getting started with ReactJS + 8base! The app is pre-configured to use 8base user authentication, GraphQL API, and Recompose, so you can immediately hop into building something awesome. 
 
-You'll need to create an [8base workspace](https://app.8base.com) and [Authentication Profile](https://docs.8base.com/8base-console/authentication#8base-authentication). Once that's done... ALL you need to do is set some enironment variables!  
+You'll need to create an [8base workspace](https://app.8base.com) and [Authentication Profile](https://docs.8base.com/8base-console/authentication#8base-authentication). Once that's done... ALL you need to do is set some environment variables!  
 
 ### Running the App
 To run the app, you're going to need to first install its dependencies.
