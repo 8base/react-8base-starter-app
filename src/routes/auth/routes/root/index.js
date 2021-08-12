@@ -1,18 +1,12 @@
-import React from 'react';
-import { withAuth } from '@8base/app-provider';
+import { useEffect } from 'react';
+import { useAuth } from '8base-react-sdk';
 
-class AuthContainer extends React.Component {
-  async componentDidMount() {
-    const { auth } = this.props;
+export const AuthContainer = () => {
+  const { authClient } = useAuth();
 
-    await auth.authClient.authorize();
-  }
+  useEffect(() => {
+    authClient.authorize();
+  }, [authClient]);
 
-  render() {
-    return <h2>Loading...</h2>;
-  }
-}
-
-AuthContainer = withAuth(AuthContainer);
-
-export { AuthContainer };
+  return <h2>Loading...</h2>;
+};

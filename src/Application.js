@@ -1,47 +1,42 @@
-import React from 'react'
-import { AppProvider } from '@8base/react-sdk'
-import { BrowserRouter } from 'react-router-dom'
+import React, { useCallback } from 'react';
+import { AppProvider } from '8base-react-sdk';
+import { BrowserRouter } from 'react-router-dom';
 
-import Routes from './routes'
-import AuthClient from './shared/auth'
+import { WORKSPACE_ENDPOINT } from './shared/constants';
+import { authClient } from './shared/auth';
+import { Routes } from './routes';
 
-const workspaceEndpoint = process.env.REACT_APP_WORKSPACE_ENDPOINT
-
-class Application extends React.PureComponent {
-  onRequestSuccess = ({ operation }) => {
-    const message = operation.getContext()
+export const Application = () => {
+  const onRequestSuccess = useCallback(({ operation }) => {
+    const message = operation.getContext();
 
     if (message) {
       // eslint-disable-next-line no-console
-      console.error(message)
+      console.log(message);
     }
-  }
+  }, []);
 
-  onRequestError = ({ graphQLErrors }) => {
-    const hasGraphQLErrors = Array.isArray(graphQLErrors) && graphQLErrors.length > 0
+  const onRequestError = useCallback(({ graphQLErrors }) => {
+    const hasGraphQLErrors = Array.isArray(graphQLErrors) && graphQLErrors.length > 0;
 
     if (hasGraphQLErrors) {
-      graphQLErrors.forEach(error => {
+      graphQLErrors.forEach((error) => {
         // eslint-disable-next-line no-console
-        console.error(error.message)
-      })
+        console.error(error.message);
+      });
     }
-  }
+  }, []);
 
-  render () {
-    return (
-      <BrowserRouter>
-        <AppProvider
-          uri={workspaceEndpoint}
-          authClient={AuthClient}
-          onRequestError={this.onRequestError}
-          onRequestSuccess={this.onRequestSuccess}
-        >
-          <Routes />
-        </AppProvider>
-      </BrowserRouter>
-    )
-  }
-}
-
-export { Application }
+  return (
+    <BrowserRouter>
+      <AppProvider
+        uri={WORKSPACE_ENDPOINT}
+        authClient={authClient}
+        onRequestError={onRequestError}
+        onRequestSuccess={onRequestSuccess}
+      >
+        <Routes />
+      </AppProvider>
+    </BrowserRouter>
+  );
+};

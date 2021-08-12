@@ -1,4 +1,3 @@
-import { NavBar } from './NavBar';
-import { AuthButton } from './AuthButton';
+export * from './ui';
 
-export { NavBar, AuthButton };
+export { ProtectedRoute } from './ProtectedRoute';
