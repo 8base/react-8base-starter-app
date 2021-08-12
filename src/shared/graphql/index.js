@@ -1,9 +1,10 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
+
 /**
  * Query the current users details.
  */
 export const CURRENT_USER_QUERY = gql`
-  query {
+  query CurrentUser {
     user {
       id
       email
@@ -12,6 +13,7 @@ export const CURRENT_USER_QUERY = gql`
     }
   }
 `;
+
 /**
  * Sign up a new user mutation.
  */
@@ -20,6 +22,8 @@ export const USER_SIGN_UP_MUTATION = gql`
     userSignUpWithToken(user: $user, authProfileId: $authProfileId) {
       id
       email
+      lastName
+      firstName
     }
   }
 `;

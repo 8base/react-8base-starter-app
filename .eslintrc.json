@@ -5,6 +5,7 @@
   ],
   "extends": [
     "plugin:prettier/recommended",
+    "plugin:import/recommended",
     "react-app"
   ],
   "rules": {
@@ -12,5 +13,12 @@
     "no-console": ["warn"],
     "no-trailing-spaces": "warn",
     "quote-props": ["error", "as-needed"]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }
